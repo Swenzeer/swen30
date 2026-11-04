@@ -471,7 +471,8 @@ $('#track').innerHTML=[...words,...words].map(w=>`<span>${w}</span>`).join('');
 // players: g = m | f | x ; s = oui | peut-etre | non ; ex = exemple (à retirer)
 const PLAYERS=[
  {n:'Swen',e:'🎂',g:'m',s:'oui',host:1},
- {n:'Martin',e:'🥸',g:'m',s:'oui'}
+ {n:'Martin',e:'🥸',g:'m',s:'oui'},
+ {n:'Louis',e:'🫡',g:'m',s:'oui'}
 ];
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function avatar(p){
