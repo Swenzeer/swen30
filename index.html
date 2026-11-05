@@ -145,7 +145,7 @@ h3{font:700 16px/1.25 var(--display);margin:0}
 .roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px}
 .pc{display:grid;justify-items:center;gap:4px;padding:10px 6px 12px;border-radius:16px;background:var(--bg);text-align:center;min-width:0}
 .pc svg{width:72px;height:86px}
-.pc b{font:700 13px var(--display);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pc b{font:700 13px/1.15 var(--display);max-width:100%;overflow-wrap:anywhere;text-wrap:balance}
 .pc small{font:600 11px var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
 .pc.host{background:var(--block);color:var(--on-block)}
 .pc.host small{color:var(--ink)}
@@ -489,7 +489,7 @@ function avatar(p){
   return `<svg viewBox="0 0 100 120" aria-hidden="true">${hair}<path d="${torso}" fill="${body}"/>${shoulders}<circle cx="50" cy="40" r="25" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/><text x="50" y="41" text-anchor="middle" dominant-baseline="central" font-size="32">${esc(p.e)}</text></svg>`;
 }
 const yes=PLAYERS.filter(p=>p.s==='oui'),maybe=PLAYERS.filter(p=>p.s==='peut-etre');
-$('#roster').innerHTML=yes.map((p,i)=>`<div class="pc${p.host?' host':''}" style="--i:${i}">${avatar(p)}<b>${esc(p.n)}</b></div>`).join('');
+$('#roster').innerHTML=yes.map((p,i)=>`<div class="pc${p.host?' host':''}" style="--i:${(i*Math.min(1,5/Math.max(yes.length-1,1))).toFixed(2)}">${avatar(p)}<b>${esc(p.n)}</b></div>`).join('');
 $('#nb').innerHTML=`${yes.length}`;
 $('#maybe').textContent=maybe.map(p=>p.n).join(' · ');
 $('#maybeWrap').hidden=!maybe.length;
